@@ -1,8 +1,9 @@
 package com.snape.shivichu.animatedarcprogress.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 
 import com.snape.shivichu.animatedarcprogress.R;
@@ -16,6 +17,8 @@ public class ArcProgressActivity extends AppCompatActivity {
 
     SeekBar seekBar;
     ArcProgress arcProgress;
+    Button bAnimateProgressBar;
+    int VALUE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,21 +26,16 @@ public class ArcProgressActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        seekBar = (SeekBar)findViewById(R.id.seekBar);
-        arcProgress = (ArcProgress)findViewById(R.id.arc_progress);
+        seekBar = (SeekBar) findViewById(R.id.seekBar);
+        arcProgress = (ArcProgress) findViewById(R.id.arc_progress);
+        bAnimateProgressBar = (Button) findViewById(R.id.btn_animate);
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, final int value, boolean b) {
 
                 arcProgress.setProgress(0);
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        animateProgress(value);
-                    }
-                },500);
+                VALUE = value;
 
             }
 
@@ -52,6 +50,15 @@ public class ArcProgressActivity extends AppCompatActivity {
             }
         });
 
+        bAnimateProgressBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                animateProgress(VALUE);
+
+            }
+        });
+
     }
 
     private void animateProgress(int value) {
@@ -59,7 +66,7 @@ public class ArcProgressActivity extends AppCompatActivity {
         arcProgress.setBottomText("Progress Bar");
         arcProgress.setTextSize(30);
 
-        arcProgress.animateProgressTo(0, value,500, new ArcProgress.ProgressAnimationListener() {
+        arcProgress.animateProgressTo(0, value, 500, new ArcProgress.ProgressAnimationListener() {
 
             @Override
             public void onAnimationStart() {

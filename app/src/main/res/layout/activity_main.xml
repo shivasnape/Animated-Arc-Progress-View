@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:circular="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:circular="http://schemas.android.com/apk/res-auto"
     tools:context="com.snape.shivichu.animatedarcprogress.activity.ArcProgressActivity">
 
     <LinearLayout
@@ -17,37 +17,44 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="Animated ArcProgress"
             android:gravity="center"
-            android:textSize="20sp"
+            android:padding="10dp"
+            android:text="Animated ArcProgress"
             android:textColor="#030202"
-            android:padding="10dp"/>
+            android:textSize="20sp" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="127dp" />
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:padding="10dp" />
 
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_marginTop="25dp"
-       android:gravity="center">
+        <Button
+            android:id="@+id/btn_animate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Animate Progress" />
 
-       <com.snape.shivichu.mylibrary.arcprogress.arcprogress.ArcProgress
-           android:id="@+id/arc_progress"
-           android:layout_width="120dp"
-           android:layout_height="120dp"
-           android:background="#140a70"
-           circular:arc_text_color="#fff" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center">
 
-   </RelativeLayout>
+            <com.snape.shivichu.mylibrary.arcprogress.arcprogress.ArcProgress
+                android:id="@+id/arc_progress"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="#140a70"
+                circular:arc_text_color="#fff" />
+
+        </RelativeLayout>
 
     </LinearLayout>
-
 
 </RelativeLayout>
